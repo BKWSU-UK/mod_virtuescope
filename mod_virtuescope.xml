@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<extension type="module" version="3.0.0" client="site" method="upgrade">
+	<name>Virtuescope Module</name>
+	<author>Allan Schweitz</author>
+	<creationDate>Jan 21, 2016</creationDate>
+	<copyright>Copyright 2016 All rights reserved.</copyright>
+	<license>GNU/GPL</license>
+	<authorEmail>allan@bkconnect.net</authorEmail>
+	<authorUrl>http://www.brahmakumaris.org</authorUrl>
+	<version>1.1.6</version>
+	<description>MOD_VIRTUESCOPE_DESCRIPTION</description>
+	<files>
+	    <filename>mod_virtuescope.xml</filename>
+		<filename module="mod_virtuescope">mod_virtuescope.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+	</files>
+    <media destination="mod_virtuescope" folder="media">
+      <folder>js</folder>
+      <folder>css</folder>
+      <folder>images</folder>
+    </media>
+	<languages>
+        <language tag="en-GB">language/en-GB/en-GB.mod_virtuescope.ini</language>
+        <!-- language tag="es-ES">language/es-ES/es-ES.mod_ems.ini</language>
+        <language tag="pt-PT">language/pt-PT/pt-PT.mod_ems.ini</language>
+        <language tag="nl-BE">language/nl-BE/nl-BE.mod_ems.ini</language>
+        <language tag="nl-NL">language/nl-NL/nl-NL.mod_ems.ini</language-->
+    </languages>
+	<config>
+      <fields name="params">
+        <fieldset name="advanced">
+            <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+            <field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+            <field name="cache" type="list" default="1" class="btn-group" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+              <option value="1">JGLOBAL_USE_GLOBAL</option>
+              <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+            </field>
+            <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+            <field name="cachemode" type="hidden" default="static">
+              <option value="static"></option>
+            </field>
+          </fieldset>
+      </fields>  
+	</config>
+	<updateservers>
+      <server type="extension" priority="1" name="Virtuescope Module">http://updates.bkwsu.eu/joomla/mod_virtuescope.xml</server>
+    </updateservers>
+</extension>
