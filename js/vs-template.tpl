@@ -55,5 +55,5 @@
     <button id="yearPlanPdf" onclick="yearPlan.downloadPdf()" class="btn btn-primary">Download PDF</button>
     <button id="yearPlanMail" class="btn btn-primary">Send Email</button>
   </div>
+  <div id="yearPlan" class="col-md-12"></div>
 </div>
-<div id="yearPlan" class="row"></div>
