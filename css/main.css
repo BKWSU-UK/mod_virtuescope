@@ -72,9 +72,9 @@ h1 {
     width: 100%;
 }
 
-#virtuescopeContainer { width: 99%; }
-#yearPlanControls { vertical-align: top; padding-right: 10px }
-#canvasContainer { width: 650px; min-width: 650px; margin-left: -250px}
+#virtuescopeContainer { width: 100%; }
+#yearPlanControls { vertical-align: top; }
+#canvasContainer { width: 100%; max-width: 650px; margin-left: auto; margin-right: auto; }
 
 #rotation, #stopIt, #yearPlanRestart ,#yearPlanPdf, #yearPlanMail { display: none }
 #plansForm { display: inline }
@@ -91,8 +91,8 @@ h1 {
 .yearPlanVirtue, .yearPlanTitle { float: left; width: 120px; font-size: 110%; margin: 10px 0 0 0; }
 .yearPlanVirtue { margin-top: 10px; white-space: nowrap }
 .yearPlanEntry { clear: both; }
-.yearPlanEntry img { display: block; margin-left: auto; margin-right: auto }
-.yearPlanEntry p, .yearPlanEntryLink, .yearPlanEntryPause { text-align: center; text-decoration: none !important; font-size: 14px }
+.yearPlanEntry img { display: block; margin-left: auto; margin-right: auto; border-radius: 0 !important; }
+.yearPlanEntry p, .yearPlanEntryLink, .yearPlanEntryPause { text-align: center; text-decoration: none !important; }
 .yearPlanEntryPause { color: white }
 .month { width: 24%; margin-left: 10px }
 .month .yearPlanEntry { min-height: 150px; font-size: 16px }
@@ -113,7 +113,7 @@ h1 {
 #advanced form { margin-bottom: 10px }
 
 #spinContainer { position: relative }
-#startIt { width: 200px; height: 35px; margin-top: 30px }
+#startIt { max-width: 300px; margin: 30px auto 0; }
 #runningMsg { margin-top: 30px }
 #textDisplay { min-height: 180px }
 .ui-dialog { background-color: white; padding: 10px 10px 0 10px !important;}
@@ -122,21 +122,21 @@ h1 {
 
 @media (max-width: 900px) {
     #yearPlanControls { margin: 10px auto; padding: 0 }
-    body, #virtuescopeContainer, #canvasContainer, #yearPlanControls { width: 99%; display: block; }
+    body, #virtuescopeContainer, #canvasContainer, #yearPlanControls { width: 100%; display: block; }
     body { width: 100%; margin: 0 }
-    #canvasContainer { width: 650px !important; min-width: 650px; margin-left: auto; margin-right: auto; }
+    #canvasContainer { width: 100% !important; max-width: 650px; margin-left: auto; margin-right: auto; }
     #spinContainer { width: 100%; margin-top: -50px }
-    #startIt { margin: 0 auto; display: block; }
+    #startIt { margin: 0 auto; }
     #myCanvas { margin: 0 auto; display: block; }
     #plansFormDiv { width: 100% }
     #plans-button { margin: 20px auto; display: block; }
-    #yearPlanRestartRow { display: none }
     #textDisplay { min-height: 50px; font-size: 1.8em; }
     #spinContainer { padding-top: 20px }
     #virtuescopeContent { width: 95%; margin: 0 auto 90px auto }
     .month { width: 45%; margin-left: 10px; }
     #plansFormDiv { display: block }
     #spinner { top: 28px; }
+    #sendButtons { text-align: left }
 }
 
 @media (max-width: 650px) {

@@ -82,6 +82,8 @@ var yearPlan = (function() {
     /** Animation with the dots. */
     var typeAnim;
 
+    var dots = 0;
+
     /**
      * Resets all the variables for a new yearly plan.
      */
@@ -141,12 +143,18 @@ var yearPlan = (function() {
     var fillPlan = function (idPrefix, dateData)
     {
         jQuery("#yearPlan").append(
-            "<div class='month col-md-3 col-sm-4 col-xs-12'>\n\
-                <h2 class='yearPlanTitle' id='" + idPrefix + "_title'>" + (dateData.day ? dateData.day + " " : "") + dateData.month + " <span class='yearPlanYear'>" + dateData.year + "</span></h2>\n\
-                <div class='yearPlanEntry' id='" + idPrefix + "_start'>\n\
-                    <div class='yearPlanEntryLink'><a class='yearPlanEntryPause' href='#' id='" + idPrefix + "_img' rel='play' onclick='return yearPlan.startWheel(" + idPrefix + ")'>\n"
-            + " " + "</a></div></div>\n\n\
-                </div>");
+            "<div class='col-12 col-sm-6 col-lg-3 mb-3'>\n\
+                <div class='card h-100 overflow-hidden'>\n\
+                    <div class='card-header py-2'>\n\
+                        <h3 class='h6 mb-0' id='" + idPrefix + "_title'>" + (dateData.day ? dateData.day + " " : "") + dateData.month + " <span class='yearPlanYear'>" + dateData.year + "</span></h3>\n\
+                    </div>\n\
+                    <div class='card-body p-0'>\n\
+                        <div class='yearPlanEntry' id='" + idPrefix + "_start'>\n\
+                            <div class='yearPlanEntryLink'><a class='yearPlanEntryPause' href='#' id='" + idPrefix + "_img' rel='play' onclick='return yearPlan.startWheel(" + idPrefix + ")'>\n"
+            + " " + "</a></div></div>\n\
+                    </div>\n\
+                </div>\n\
+            </div>");
     };
 
     var displayWaitMessage = function(plansCombo) {
@@ -259,13 +267,14 @@ var yearPlan = (function() {
             var bgColor = backColors[selectedVirtue];
             var fgColor = foregroundColor[selectedVirtue];
             var monthTitle = jQuery("#" + month + "_title");
-            monthTitle.after("<div class='yearPlanVirtue' style='color:" + bgColor + "'>" + selectedVirtue + " </div>");
-            monthTitle.parent().addClass(selectedVirtue.toLowerCase());
+            monthTitle.closest(".col-12, .col-sm-6, .col-lg-3").addClass(selectedVirtue.toLowerCase());
             var monthStart = jQuery("#" + month + "_start");
             monthStart.html(virtueHtml);
             monthStart.css("background-color", bgColor);
             monthStart.css("color", fgColor);
-            monthStart.css("padding", "8px");
+            monthStart.css("padding", "1rem");
+            monthStart.css("min-height", "200px");
+            monthStart.css("font-size", "1.1rem");
             monthStart.fadeIn("slow", function() {
                 pub.data[month].virtue = selectedVirtue;
                 pub.data[month].virtueText = virtueHtml.replace(/<h2.+?>.+?<\/h2>(.+)/gm, "$1");
@@ -301,7 +310,7 @@ var yearPlan = (function() {
 
     pub.downloadPdf = function() {
         var jsonData = JSON.stringify(pub.data);
-        jQuery.download('http://liferay.bkwsu.eu/virtuescope2/rest/pdfgen',
+        jQuery.download('https://liferay.bkwsu.eu/virtuescope2/rest/pdfgen',
             'json=' + encodeURIComponent(jsonData) + "&lang=" + getGlobalLocale()
             + "&plan=" + getPlanName(), 'post', 'pdf');
     };
@@ -339,6 +348,7 @@ var yearPlan = (function() {
                         else {
                             jQuery("#mailLabel").html(i18n["Please wait"] + " <span id='dots'></span>");
                             jQuery(".ui-dialog-buttonpane button").button("disable");
+                            dots = 0;
                             typeAnim = setInterval(type, 600);
                             var closeDialogue = function() {
                                 setTimeout(function() {
@@ -348,7 +358,7 @@ var yearPlan = (function() {
                             jQuery.ajax({
                                 type: 'GET',
                                 jsonpCallback: 'jsonCallback',
-                                url: "http://liferay.bkwsu.eu/virtuescope2/rest/pdfgen/emailEncodedJsonp",
+                                url: "https://liferay.bkwsu.eu/virtuescope2/rest/pdfgen/emailEncodedJsonp",
                                 data: {json: encodeAndCompress(jsonData), lang: getGlobalLocale(), to: toEmail, plan: getPlanName()},
                                 success: function(data) {
                                     var reply = data.res;

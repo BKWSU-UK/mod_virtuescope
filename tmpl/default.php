@@ -9,21 +9,23 @@ use Joomla\CMS\Uri\Uri;
 $app = Factory::getApplication();
 $lang = $app->getLanguage()->getTag();
 $lang = str_replace('-', '_',$lang);
-$document = $app->getDocument();
-$document->addCustomTag('<meta property="og:image" content="' . Uri::base(true) . '/media/mod_virtuescope/images/wheels/' . $lang . '.png" />');
+$doc = $app->getDocument();
+$doc->addCustomTag('<meta property="og:image" content="' . Uri::base(true) . '/media/mod_virtuescope/images/wheels/' . $lang . '.png" />');
 $style = '#example {
 	border-color:#' . $bordercolor . ';
 	}';
-$document->addStyleDeclaration('#rotation, #stopIt, #yearPlanRestart ,#yearPlanPdf, #yearPlanMail, #virtuescopeContent, #virtuescopePredictions, #spinner, #advanced { display: none }');
-$document->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/lib/jquery.json.min.js');
-$document->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/lib/jquery.cookie.js');
-$document->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/jquery-dataTables-1.10.1/js/jquery.dataTables-1.10.1.js');
-$document->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/jquery-ui-1.11.1.flick/jquery-ui.min.js');
-$document->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/compression/lz-string-1.4.4.js');
-$document->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/lib/handlebars-v4.0.5.js');
-$document->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/lib/canvas_wrapper.js');
-$document->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/loader_support.js');
-$document->addScriptDeclaration('
+$doc->addStyleDeclaration('#rotation, #stopIt, #yearPlanRestart ,#yearPlanPdf, #yearPlanMail, #virtuescopeContent, #virtuescopePredictions, #spinner, #advanced { display: none }');
+$doc->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/lib/jquery.json.min.js');
+$doc->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/lib/jquery.cookie.js');
+$doc->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/jquery-dataTables-1.10.1/js/jquery.dataTables-1.10.1.js');
+$doc->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/jquery-ui-1.12.1.custom/jquery-ui.min.js');
+$doc->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/compression/lz-string-1.4.4.js');
+$doc->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/lib/handlebars-v4.0.5.js');
+$doc->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/lib/canvas_wrapper.js');
+$doc->addScript(Uri::base( true ) . '/media/mod_virtuescope/js/loader_support.js');
+$doc->addStyleSheet(JURI::base( true ).'/media/mod_virtuescope/js/jquery-ui-1.12.1.custom/jquery-ui.min.css');
+$doc->addStyleSheet(JURI::base( true ).'/media/mod_virtuescope/js/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css');
+$doc->addScriptDeclaration('
   jQuery(document).ready(function(){
     var source = jQuery.ajax("' . Uri::base( true ) . '/media/mod_virtuescope/js/vs-template.tpl").done(function(data) {
         jQuery("#vs-container").html(Handlebars.compile(data)({}));

@@ -227,8 +227,12 @@ var ui = (function () {
         yearPlan.setWidth();
 
         $yearPlanMail.click(function (event) {
-            yearPlan.downloadMail();
-            event.preventDefault();
+            event.preventDefault();  // Move this up to ensure it always happens
+            if ($yearPlanMail.length) {  // Check if element exists
+                yearPlan.downloadMail();
+            } else {
+                console.error('Email button not found in DOM');
+            }
         });
 
         loadOnChangePosListener();

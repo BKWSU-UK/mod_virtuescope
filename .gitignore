@@ -1,0 +1,11 @@
+# Joomla Extension Gitignore
+mod_virtuescope.zip
+dist/
+*.log
+.DS_Store
+.idea/
+.vscode/
+.cursor/
+node_modules/
+vendor/
+
