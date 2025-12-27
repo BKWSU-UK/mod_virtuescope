@@ -59,22 +59,11 @@
         </div>
     </div>
 </div>
-
-
-        </div>
-    </div>
-
-    <div class="row align-items-center g-2 mt-3">
-        <div class="col-12">
-            <h2 id="virtuescopePredictions" class="h4 mb-0">Virtuescope Predictions</h2>
-        </div>
-        <!--div class="col-12 col-md-6" id="sendButtons">
-            <div class="d-flex flex-column flex-md-row gap-2 justify-content-md-end">
-                <button id="yearPlanPdf" onclick="yearPlan.downloadPdf()" class="btn btn-primary">Download PDF</button>
-                <button id="yearPlanMail" class="btn btn-primary">Send Email</button>
-            </div>
-        </div-->
-    </div>
-
-    <div id="yearPlan" class="row mt-2"></div>
+<div class="row">
+  <div class="col-md-6"><h2 id="virtuescopePredictions">Virtuescope Predictions</h2></div>
+  <!--div class="col-md-6" id="sendButtons">
+    <button id="yearPlanPdf" onclick="yearPlan.downloadPdf()" class="btn btn-primary">Download PDF</button>
+    <button id="yearPlanMail" class="btn btn-primary">Send Email</button>
+  </div>
+  <div id="yearPlan" class="col-md-12"></div-->
 </div>
